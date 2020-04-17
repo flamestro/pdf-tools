@@ -1,0 +1,6 @@
+OUTPUT_FILE=outputfile.pdf
+FILE_PATH,START_PAGE,END_PAGE Enter your wished processing order starting with the next line //THIS LINE IS IGNORED BUT DO NOT REMOVE IT
+/home/someuser/somedir/somefile.pdf,2,4
+/home/someuser/somedir/somefile.pdf,2,4
+/home/someuser/somedir/somefile.pdf,1,4
+/home/someuser/somedir/somefile.pdf,7,7
