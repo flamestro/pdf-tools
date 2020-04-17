@@ -7,8 +7,14 @@ __author__ = "Ahmet Kilic https://github.com/flamestro"
 from PyPDF2 import PdfFileWriter, PdfFileReader
 
 
-# inspired by source: https://stackoverflow.com/questions/490195/split-a-multi-page-pdf-file-into-multiple-pdf-files-with-python
 def split_pdf_to_two(filename, page_number, directory=""):
+    """
+    This function is inspired by https://stackoverflow.com/questions/490195/split-a-multi-page-pdf-file-into-multiple-pdf-files-with-python
+    :param filename: the absolute path to the PDF file which should be split
+    :param page_number: the last page of the first outcome file
+    :param directory: the directory in which the outcome path should be saved
+    :return: Creates two PDF files
+    """
     pdf_reader = PdfFileReader(open(filename, "rb"))
     try:
         assert page_number < pdf_reader.numPages
@@ -31,7 +37,13 @@ def split_pdf_to_two(filename, page_number, directory=""):
         print("Error: The PDF you are cutting has less pages than you want to cut!")
 
 
-def combine_pdf_files(metadata=open("metadata", "r").read().splitlines()):
+def combine_pdf_files(metadatapath="metadata"):
+    metadata = open(metadatapath, "r").read().splitlines()
+    """
+    This function can combine multiple PDF files in to one
+    :param metadata: Metadata containing all the information to create outcome file
+    :return: creates outcome file as defined in the metadata file
+    """
     output_path = metadata[0].split("=")[1]
     relevant_lines = metadata[2:]
     pdf_writer = PdfFileWriter()
@@ -67,6 +79,6 @@ if __name__ == "__main__":
         split_pdf_to_two(file_path, int(page_number), directory)
     elif choice == "combine":
         metafile = input("Enter the absolute path to your metadata file: ")
-        combine_pdf_files(metadata=open(metafile, "r").read().splitlines())
+        combine_pdf_files(metadatapath=metafile)
     else:
         print("Shame on you... you have made the wrong choice...")
