@@ -4,8 +4,8 @@ This is a simple script which will split or combine pdf files.
 
 ## Split
 
-When you want to split a file you will have to enter a page number.
-This is the last page of the first outcome pdf file.
+When you want to split a file you will have to enter a page number and a file path.
+The page number is the last page of the first outcome pdf file.
 
 ## Combine
 
